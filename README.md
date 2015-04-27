@@ -7,7 +7,7 @@ It extracts enough semantic data from your source to stop code from being commit
 ## Is Undermine Right for Me?
 You have a high volume of gated commits--or you would, except that you have to manually merge the team's work back into the trunk, resolve conflicts and generally waste time.
 
-By delegating conflict resolution to an an automated process that can handle semantic values or a numerical approximation thereof, you leave such waste and ugliness behind.
+By delegating conflict resolution to an automated process that can handle semantic values or a numerical approximation thereof, you leave such waste and ugliness behind.
 
 
 ##  TL;DR
