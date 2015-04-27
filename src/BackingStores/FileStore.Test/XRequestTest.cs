@@ -28,7 +28,7 @@ namespace FileStore.Test
 
 		[Test]
 		[Category("FirstSet")]
-		public void XRequiredParameterProperty()
+		public void TestRequiredParameterProperty()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
 			request.Type = RequestType;
@@ -38,7 +38,7 @@ namespace FileStore.Test
 
 		[Test]
 		[Category("FirstSet")]
-		public void XRequestURL()
+		public void TestRequestURL()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
 			request.Type = RequestType;
@@ -49,7 +49,7 @@ namespace FileStore.Test
 
 		[Test]
 		[Category("FirstSet")]
-		public void XNonNullResponse()
+		public void TestNonNullResponse()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
 			request.Type = RequestType;
@@ -71,6 +71,23 @@ namespace FileStore.Test
 				Assert.Fail ("@File at backing path, '{0}' exists, but response was not persisted.", FileKB.BackingPath);
 			}
 		}
+
+		[Test]
+		public void XMessageMissingOrNonFailure()
+		{
+			string failMessage = 
+				@"Your key is not valid or the daily requests limit has been reached. Please visit http://babelnet.org.";
+			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
+			request.Type = RequestType;
+			XElement response;
+			XElement message;
+			if (FileKB.TryGetResponse (request.RequestURL, out response)) {
+				if((message = response.Element("Response").Element("message")) != null)
+				{
+					Assert.AreNotEqual(failMessage, message.Value);
+				}
+			}
+			Assert.Pass();
+		}
 	}
 }
-
