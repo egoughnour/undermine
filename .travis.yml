@@ -1,0 +1,11 @@
+language: csharp
+solution: ./src/undermine.sln
+
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore ./src/undermine.sln
+
+script:
+  - xbuild ./src/undermine.sln
+  - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll
+  - nunit-console ./src/Stemmers/Porter.Test/bin/Debug/Porter.Test.dll
