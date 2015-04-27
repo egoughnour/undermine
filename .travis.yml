@@ -7,5 +7,6 @@ install:
 
 script:
   - xbuild ./src/undermine.sln
-  - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll
+  - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll /include:FirstSet
+  - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll /exclude:FirstSet
   - nunit-console ./src/Stemmers/Porter.Test/bin/Debug/Porter.Test.dll

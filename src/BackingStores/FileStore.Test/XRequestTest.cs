@@ -27,6 +27,7 @@ namespace FileStore.Test
 		}
 
 		[Test]
+		[Category("FirstSet")]
 		public void XRequiredParameterProperty()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
@@ -36,6 +37,7 @@ namespace FileStore.Test
 		}
 
 		[Test]
+		[Category("FirstSet")]
 		public void XRequestURL()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
@@ -46,6 +48,7 @@ namespace FileStore.Test
 		}
 
 		[Test]
+		[Category("FirstSet")]
 		public void XNonNullResponse()
 		{
 			var request = new XRequest(Key, word: WordToLookUp, language: RequestedLanguage);
