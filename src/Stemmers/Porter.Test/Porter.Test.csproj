@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{9966E8E5-E52D-4016-85CA-FA62139ECDDA}</ProjectGuid>
+    <ProjectGuid>{9966E8E5-E52D-4016-85CA-FA62139ECADD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Porter.Test</RootNamespace>
     <AssemblyName>Porter.Test</AssemblyName>
