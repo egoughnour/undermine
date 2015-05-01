@@ -9,3 +9,6 @@ script:
   - xbuild ./src/undermine.sln
   - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll
   - nunit-console ./src/Stemmers/Porter.Test/bin/Debug/Porter.Test.dll
+
+services:
+ - cassandra
