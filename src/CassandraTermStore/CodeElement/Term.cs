@@ -18,12 +18,15 @@ namespace CStore
 
 		public int DocumentID { get; private set;}
 
+		//term_id, word, document_id, document_name
+		//row.GetValue<int>(0)
+
 		public Term (Row termData)
-			: this((string)(termData ["word"]))
+			: this(termData.GetValue<string>(1))
 		{
-			TermID = Int32.Parse ((string)(termData ["term_id"]));
-			DocumentName = (string)(termData ["document_name"]);
-			DocumentID = Int32.Parse ((string)(termData ["document_id"]));
+			TermID = termData.GetValue<int>(0);
+			DocumentName = termData.GetValue<string>(3);
+			DocumentID = termData.GetValue<int>(2);
 		}
 
 		public Term(string value)

@@ -1,5 +1,5 @@
-CREATE KEYSPACE Semantic WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1};
- USE Semantic;
+CREATE KEYSPACE semantic WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1};
+ USE semantic;
  CREATE TABLE terms (term_id int PRIMARY KEY, word text, document_id int, document_name text);
  INSERT INTO terms (term_id, word, document_id, document_name) VALUES (444, 'General', 2, 'frmMain.cs');
  INSERT INTO terms (term_id, word, document_id, document_name) VALUES (445, 'Matrix', 2, 'frmMain.cs');
