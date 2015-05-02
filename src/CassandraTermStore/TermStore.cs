@@ -12,7 +12,7 @@ namespace CStore
 		static TermStore()
 		{
 			LocalCluster = Cluster.Builder().AddContactPoint("127.0.0.1").Build();
-			DBSession = LocalCluster.Connect("Semantic");
+			DBSession = LocalCluster.Connect("semantic");
 		}
 
 		public TermStore ()

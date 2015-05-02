@@ -11,7 +11,7 @@ namespace CStore
 			Literal = value;
 		}
 
-		protected string Literal{ get; set;}
+		public string Literal{ get; set;}
 
 		#region ICodeElement implementation
 

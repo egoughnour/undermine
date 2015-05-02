@@ -16,12 +16,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cql_scripts", "cql_scripts"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CassandraTermStore", "CassandraTermStore\CassandraTermStore.csproj", "{83740AE3-D8A0-476B-9B13-25531F3FA48F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CassandraTermStore.Test", "CassandraTermStore.Test\CassandraTermStore.Test.csproj", "{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}.Debug|x86.Build.0 = Debug|Any CPU
+		{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}.Release|x86.Build.0 = Release|Any CPU
 		{83740AE3-D8A0-476B-9B13-25531F3FA48F}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{83740AE3-D8A0-476B-9B13-25531F3FA48F}.Debug|x86.Build.0 = Debug|Any CPU
 		{83740AE3-D8A0-476B-9B13-25531F3FA48F}.Release|x86.ActiveCfg = Release|Any CPU
