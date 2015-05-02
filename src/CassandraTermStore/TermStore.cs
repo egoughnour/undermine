@@ -26,7 +26,7 @@ namespace CStore
 			var toReturn = new Dictionary<int,Term> ();
 			foreach (Row row in rows) 
 			{
-				toReturn [Int32.Parse ((string)row ["term_id"])] = new Term (row);
+				toReturn [Int32.Parse ((string)(row ["term_id"]))] = new Term (row);
 			}
 			return toReturn;
 		}

@@ -19,11 +19,11 @@ namespace CStore
 		public int DocumentID { get; private set;}
 
 		public Term (Row termData)
-			: this((string)termData ["word"])
+			: this((string)(termData ["word"]))
 		{
-			TermID = Int32.Parse ((string)termData ["term_id"]);
-			DocumentName = (string)termData ["document_name"];
-			DocumentID = Int32.Parse ((string)termData ["document_id"]);
+			TermID = Int32.Parse ((string)(termData ["term_id"]));
+			DocumentName = (string)(termData ["document_name"]);
+			DocumentID = Int32.Parse ((string)(termData ["document_id"]));
 		}
 
 		public Term(string value)
