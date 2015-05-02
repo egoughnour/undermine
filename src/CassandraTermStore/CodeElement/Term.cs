@@ -39,7 +39,7 @@ namespace CStore
 		{
 			var t = new Term (String.Copy(Literal));
 			t.TermID = TermID;
-			t.DocumentName = String.Copy(t.DocumentName);
+			t.DocumentName = String.Copy(DocumentName);
 			t.DocumentID = DocumentID;
 			return t;
 		}

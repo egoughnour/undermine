@@ -4,10 +4,16 @@ using System;
 
 namespace CStore.Test
 {
-	[TestFixture ()]
+	[TestFixture]
 	public class Test
 	{
-		[Test ()]
+		[Test]
+		public void TermCloneTest()
+		{
+
+		}
+
+		[Test]
 		public void TestCase ()
 		{
 			var ts = new TermStore ();

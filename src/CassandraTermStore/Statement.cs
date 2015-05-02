@@ -25,7 +25,7 @@ namespace CStore
 					Term toAdd;
 					if (Tokens.Contains (Terms [id]))
 					{
-						toAdd = (Term)Terms [id].Clone ();
+						toAdd = (Term)(Terms [id].Clone ());
 					}
 					else
 					{
