@@ -18,6 +18,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CassandraTermStore", "Cassa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CassandraTermStore.Test", "CassandraTermStore.Test\CassandraTermStore.Test.csproj", "{16BB1997-BFDA-44AE-9D2F-AC2D641EF8EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalLSA", "MinimalLSA\MinimalLSA.csproj", "{E3D0E92E-917E-402A-A136-DA3CAC876F7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMatrix", "DotNetMatrix\DotNetMatrix.csproj", "{E5A05224-9880-463B-9FE1-86F6E059E3DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalLSA.Test", "MinimalLSA.Test\MinimalLSA.Test.csproj", "{FCD8251D-0A42-4658-BBF2-FA97BD5F0A84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -44,10 +50,22 @@ Global
 		{B2F67D51-5DCA-4B96-B6A5-36232F982B0B}.Debug|x86.Build.0 = Debug|Any CPU
 		{B2F67D51-5DCA-4B96-B6A5-36232F982B0B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2F67D51-5DCA-4B96-B6A5-36232F982B0B}.Release|x86.Build.0 = Release|Any CPU
+		{E3D0E92E-917E-402A-A136-DA3CAC876F7C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3D0E92E-917E-402A-A136-DA3CAC876F7C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E3D0E92E-917E-402A-A136-DA3CAC876F7C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3D0E92E-917E-402A-A136-DA3CAC876F7C}.Release|x86.Build.0 = Release|Any CPU
+		{E5A05224-9880-463B-9FE1-86F6E059E3DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E5A05224-9880-463B-9FE1-86F6E059E3DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{E5A05224-9880-463B-9FE1-86F6E059E3DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{E5A05224-9880-463B-9FE1-86F6E059E3DC}.Release|x86.Build.0 = Release|Any CPU
 		{EFFDCD60-6576-45BD-9773-036A4DDB9531}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{EFFDCD60-6576-45BD-9773-036A4DDB9531}.Debug|x86.Build.0 = Debug|Any CPU
 		{EFFDCD60-6576-45BD-9773-036A4DDB9531}.Release|x86.ActiveCfg = Release|Any CPU
 		{EFFDCD60-6576-45BD-9773-036A4DDB9531}.Release|x86.Build.0 = Release|Any CPU
+		{FCD8251D-0A42-4658-BBF2-FA97BD5F0A84}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCD8251D-0A42-4658-BBF2-FA97BD5F0A84}.Debug|x86.Build.0 = Debug|Any CPU
+		{FCD8251D-0A42-4658-BBF2-FA97BD5F0A84}.Release|x86.ActiveCfg = Release|Any CPU
+		{FCD8251D-0A42-4658-BBF2-FA97BD5F0A84}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

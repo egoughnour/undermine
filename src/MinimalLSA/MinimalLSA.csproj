@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3D0E92E-917E-402A-A136-DA3CAC876F7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MinimalLSA</RootNamespace>
+    <AssemblyName>MinimalLSA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="TermRelationship.cs" />
+    <Compile Include="DocProcessor.cs" />
+    <Compile Include="IUniqueResource.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="GuidSet.cs" />
+    <Compile Include="MathHandler.cs" />
+    <Compile Include="OutputDataSet.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Stemmers\Porter\Porter.csproj">
+      <Project>{9966E8E5-E52D-4016-85CA-FA62139ECDDA}</Project>
+      <Name>Porter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetMatrix\DotNetMatrix.csproj">
+      <Project>{E5A05224-9880-463B-9FE1-86F6E059E3DC}</Project>
+      <Name>DotNetMatrix</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

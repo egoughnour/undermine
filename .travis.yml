@@ -11,6 +11,7 @@ script:
   - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll
   - nunit-console ./src/Stemmers/Porter.Test/bin/Debug/Porter.Test.dll
   - nunit-console ./src/CassandraTermStore.Test/bin/Debug/CassandraTermStore.Test.dll
+  - nunit-console ./src/MinimalLSA.Test/bin/Debug/MinimalLSA.Test.dll
 
 services:
  - cassandra
