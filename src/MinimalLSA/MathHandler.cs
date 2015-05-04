@@ -27,6 +27,8 @@ namespace MinimalLSA
 			}
 		}
 
+		TermGenerator Generator;
+
 		public MathHandler (string directoryPath, string extension)
 		{
 			RankScaleFactor = 0.7d;
@@ -39,13 +41,77 @@ namespace MinimalLSA
 				.Select (f => f.FullName).ToList ();
 
 			TermExtractor = new DocProcessor ();
+			Generator = new TermGenerator (new List<string>());
+		}
+
+
+		public bool TryOrderDocumentsByQuery(OutputDataSet data, string query, out string[] documents)
+		{
+			documents = null;
+			var queryTerms = Generator.GetTerms (query);
+			var queryVector = new GeneralVector (data.Terms.Count);
+
+			queryVector.InitToZero ();
+
+			foreach (string term in queryTerms) 
+			{
+				if (data.Terms.Contains (term)) 
+				{
+					queryVector [data.Terms [term].RowColumnIndex] += 1;
+				}
+			}
+
+			double[] theta;
+
+			queryVector.RescaleToUnitInterval ();
+			if (queryVector.ToList.Max() > 0) 
+			{
+				theta = new double[data.Documents.Count];
+
+				var queryUk = queryVector.Multiply (data.Uk);
+				var q = queryUk.Multiply (data.SkInverse);
+
+				foreach (Document document in data.Documents.GetIndexedResources()
+					.Select(r => r as Document)) 
+				{
+					var docVector = new GeneralMatrix (data.Terms.Count, 1);
+					for (int k = 0; k < data.Terms.Count; k++) 
+					{
+						docVector .Array[k] [0] = data.TermDoc.Array [k] [document.RowColumnIndex];
+					}
+
+					var docTranspose = docVector.Transpose ();
+					var transposeUk = docTranspose.Multiply (data.Uk);
+					var d = transposeUk.Multiply (data.SkInverse);
+
+					theta [document.RowColumnIndex] = 0;
+					theta [document.RowColumnIndex] = new GeneralVector (q.Array [0])
+						.UnitaryDotProduct (new GeneralVector (d.Array [0]));
+				}
+				var rankedDocs = theta.Select((rank, i) =>
+					{
+						var documentName = data.Documents.GetIndexedResources()
+							.Where(r => r.RowColumnIndex == i).First().Value;
+						return new KeyValuePair<double, string>(rank, documentName);
+					});
+				documents = rankedDocs
+					.OrderBy (kvp => kvp.Key)
+					.Select (p => p.Value)
+					.ToArray ();
+			} 
+			else
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		public OutputDataSet Index()
 		{
 			foreach (string path in Paths)
 			{
-				TermExtractor.UpdateFromFile (path);
+				TermExtractor.UpdateFromFile (path, Generator);
 			}
 
 			var localCoefficients = new GeneralMatrix (TermExtractor.Terms.Count, TermExtractor.Documents.Count);

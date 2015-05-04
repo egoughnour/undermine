@@ -33,14 +33,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="TermRelationship.cs" />
     <Compile Include="DocProcessor.cs" />
-    <Compile Include="IUniqueResource.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="GuidSet.cs" />
     <Compile Include="MathHandler.cs" />
     <Compile Include="OutputDataSet.cs" />
+    <Compile Include="UniqueResource\GuidSet.cs" />
+    <Compile Include="UniqueResource\Document.cs" />
+    <Compile Include="UniqueResource\IUniqueResource.cs" />
+    <Compile Include="UniqueResource\Line.cs" />
+    <Compile Include="UniqueResource\TermRelationship.cs" />
+    <Compile Include="TermGeneration\ISourceTermGenerator.cs" />
+    <Compile Include="TermGeneration\TermGenerator.cs" />
+    <Compile Include="TermGeneration\SourceTermGeneratorBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -52,5 +55,9 @@
       <Project>{E5A05224-9880-463B-9FE1-86F6E059E3DC}</Project>
       <Name>DotNetMatrix</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TermGeneration\" />
+    <Folder Include="UniqueResource\" />
   </ItemGroup>
 </Project>

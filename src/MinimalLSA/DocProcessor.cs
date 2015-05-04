@@ -15,34 +15,25 @@ namespace MinimalLSA
 	{
 		public GuidSet Terms;
 		public GuidSet Documents;
-		Regex TokenPattern;
-		Regex WordSplitPattern;
-		StemmerWrapper Stemmer;
-
-		public List<string> StopWords { get; set; }
 
 
 		public DocProcessor ()
 		{
 			Terms = new GuidSet ();
 			Documents = new GuidSet ();
-			TokenPattern = new Regex(@"[\s]|(?=\p{P})");
-			WordSplitPattern = new Regex (@"(?<=[a-z])([A-Z])|(?<=[A-Z])([A-Z][a-z])");
-			Stemmer = new StemmerWrapper ();
-			StopWords = new List<string> ();
 		}
 
-		public void UpdateFromFile(string path)
+		public void UpdateFromFile(string path, TermGenerator generator)
 		{
 			string[] fileLines = File.ReadAllLines (path);
 
 			for(int i=0; i < fileLines.Length; i++)
 			{
-				ProcessLine (path, fileLines [i], i);
+				ProcessLine (path, fileLines [i], i, generator);
 			}
 		}
 
-		void ProcessLine (string path, string LineText, int lineNumber)
+		void ProcessLine (string path, string LineText, int lineNumber, TermGenerator generator)
 		{
 			TermRelationship term;
 			Document doc;
@@ -52,10 +43,8 @@ namespace MinimalLSA
 			string docName = Path.GetFileName (path);
 
 			int termIndex = 0;
-			foreach (string token in TokenPattern.Split (LineText)) {
-				string[] stems;
-				if (TryGetStemsFromToken (token, out stems)) {
-					foreach (string word in stems) {
+			foreach (string word in generator.GetTerms(LineText))
+			{
 						var line = new Line {
 							Id = Guid.NewGuid (),
 							Value = LineText,
@@ -106,39 +95,7 @@ namespace MinimalLSA
 						lines.Lines = lineList.ToArray ();
 						termExists = false;
 						termIndex++;
-					}
-
-				}
 			}
 		}
-
-		bool TryGetStemsFromToken (string token, out string[] stems)
-		{
-			stems = null;
-			try
-			{
-				var spaceSeparated = WordSplitPattern.Replace (token, @" $1$2");
-				using(var memStream = new MemoryStream(Encoding.ASCII.GetBytes(spaceSeparated)))
-				{
-					memStream.Position = 0;
-					Stemmer.StopWords = StopWords;
-					if (Stemmer.TryProcessStream (memStream)) {
-						stems = Stemmer.Stems.ToArray ();
-					}
-					else
-					{
-						return false;
-					}
-
-				}
-			}
-			catch 
-			{
-				return false;
-			}
-			return true;
-		}
-
-
 	}
 }
