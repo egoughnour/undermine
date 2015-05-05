@@ -29,7 +29,7 @@ namespace MinimalLSA
 
 		TermGenerator Generator;
 
-		public MathHandler (string directoryPath, string extension)
+		public MathHandler (string directoryPath, string extension, Func<string,string> preprocessingStep = null)
 		{
 			RankScaleFactor = 0.7d;
 			var directory = new DirectoryInfo (directoryPath);
@@ -40,7 +40,7 @@ namespace MinimalLSA
 			Paths = directory.GetFileSystemInfos (fileGlob, SearchOption.AllDirectories)
 				.Select (f => f.FullName).ToList ();
 
-			TermExtractor = new DocProcessor ();
+			TermExtractor = new DocProcessor (preprocessingStep); 
 			Generator = new TermGenerator (new List<string>());
 		}
 

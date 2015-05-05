@@ -15,10 +15,15 @@ namespace MinimalLSA
 	{
 		public GuidSet Terms;
 		public GuidSet Documents;
+		bool doPreprocess;
+		Func<string,string> PreprocessLine;
 
-
-		public DocProcessor ()
+		public DocProcessor (Func<string, string> preprocessor = null)
 		{
+			doPreprocess = preprocessor != null;
+			if (doPreprocess) {
+				PreprocessLine = preprocessor;
+			}
 			Terms = new GuidSet ();
 			Documents = new GuidSet ();
 		}
@@ -29,6 +34,9 @@ namespace MinimalLSA
 
 			for(int i=0; i < fileLines.Length; i++)
 			{
+				if (doPreprocess) {
+					fileLines [i] = PreprocessLine (fileLines [i]);
+				}
 				ProcessLine (path, fileLines [i], i, generator);
 			}
 		}
