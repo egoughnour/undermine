@@ -1,3 +1,0 @@
-﻿This is to test the usefulness of the Porter stemmer.  The stemmer should stem most of this.
-Next I'm going to add in a handler for Pascal Case.  Then we can tie each identifier to a set of semantic values.
-So 'var' is going to be a stop word, so-called.
