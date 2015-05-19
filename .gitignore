@@ -6,3 +6,5 @@
 
 src/**/obj/**
 *.class
+
+src/Jama/ChangeLog

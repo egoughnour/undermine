@@ -26,6 +26,7 @@ public class GeneralVector
 		return InnerVector.get(0, index);
 	}
 	
+	
 	public void set(int index, double value)
 	{
 		InnerVector.set(0, index, value);
@@ -33,15 +34,29 @@ public class GeneralVector
 	
 	public void initToZero()
 	{
-		InnerVector.get(0).forEach(e -> e = 0d);
+		for(int index=0; index < InnerVector.n; index++)
+		{
+			set(index, 0d);
+		}
 	}
 	
 	public void rescaleToUnitInterval()
 	{
-		double max = Collections.max(InnerVector.get(0));
+		
+		double max = 0d;
+		for(int index=0; index < InnerVector.n; index++)
+		{
+			max = (Math.abs(get(index)) > Math.abs(max))
+			? get(index)
+			: max; 
+		}
+		
 		if(max != 0d)
 		{
-			InnerVector.get(0).forEach(e -> e= e/max);
+			for(int index=0; index < InnerVector.n; index++)
+			{
+				set(index, InnerVector.get(0,  index)/max);
+			}
 		}
 	}
 	
@@ -52,12 +67,13 @@ public class GeneralVector
 	
 	public double unitaryDotProduct(GeneralVector operand)
 	{
-		double[] total = {0d};
-		int[] index = {0};
-		toList().forEach(e -> total[0] +=
-				((e * operand.get(index[0]++))/
-					(getMagnitude() * operand.getMagnitude())));
-		return total[0];
+		double total = 0d;
+		
+		for(int index=0; index < InnerVector.n; index++)
+		{
+			total += get(index) * operand.get(index);
+		}
+		return total/(getMagnitude()*operand.getMagnitude());
 	}
 
 	public ArrayList<Double> toList()
