@@ -1,16 +1,1 @@
-language: csharp
-solution: ./src/undermine.sln
-
-install:
-  - sudo apt-get install nunit-console
-  - nuget restore ./src/undermine.sln
-
-script:
-  - ./src/dbscripts/db_setup.sh
-  - xbuild ./src/undermine.sln
-  - nunit-console ./src/BackingStores/FileStore.Test/bin/Debug/FileStore.Test.dll
-  - nunit-console ./src/Stemmers/Porter.Test/bin/Debug/Porter.Test.dll
-  - nunit-console ./src/CassandraTermStore.Test/bin/Debug/CassandraTermStore.Test.dll
-
-services:
- - cassandra
+language: java
